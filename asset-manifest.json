@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/junior-react-app/static/css/main.4119848f.css",
+    "main.js": "/junior-react-app/static/js/main.eb20cb78.js",
+    "static/media/a-logo.svg": "/junior-react-app/static/media/a-logo.5e2d5c0348a029df06ba38b7f3e6be41.svg",
+    "static/media/empty-cart_black.svg": "/junior-react-app/static/media/empty-cart_black.dda1308fa7358772c63f3c584b677675.svg",
+    "static/media/empty-cart.svg": "/junior-react-app/static/media/empty-cart.2ac1579a6340ac7687854fd20f455ec2.svg",
+    "index.html": "/junior-react-app/index.html",
+    "static/media/arrow-right.svg": "/junior-react-app/static/media/arrow-right.f3d4b2c79af4ecfc5143bbc74d014025.svg",
+    "static/media/arrow-left.svg": "/junior-react-app/static/media/arrow-left.1ca45c0b8b9ece68562c1f6be07fecdf.svg",
+    "static/media/arrow-down.svg": "/junior-react-app/static/media/arrow-down.766d7b11f183f77a1e40c47ea18dd7ee.svg",
+    "static/media/arrow-up.svg": "/junior-react-app/static/media/arrow-up.f50a5cf5cf8bfef55adfa0e02aae74ee.svg",
+    "main.4119848f.css.map": "/junior-react-app/static/css/main.4119848f.css.map",
+    "main.eb20cb78.js.map": "/junior-react-app/static/js/main.eb20cb78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4119848f.css",
+    "static/js/main.eb20cb78.js"
+  ]
+}
