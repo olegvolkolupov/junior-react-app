@@ -1,0 +1,60 @@
+.container {
+  position: relative;
+}
+
+.selectCurrencyButton {
+  position: relative;
+
+  width: 38px;
+
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.currencyBtnNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.currencyButtonName {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  color: #1d1f22;
+}
+
+.currencyModal {
+  padding: 0;
+  position: absolute;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.currenciesList {
+  margin: 0;
+  padding: 10px 0px;
+  display: block;
+  width: 100%;
+  list-style: none;
+}
+
+.currencyItem {
+  margin: 0;
+  padding: 10px 20px 10px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+
+  color: #1d1f22;
+  background: #ffffff;
+}

@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  background: #fff;
+}
+
+.categoryName { 
+  margin-top: 0px;
+  margin-bottom: 103px;
+
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 160%;
+  color: #1d1f22;
+}
+
+.productCardsContainer {
+  margin-top: 0px;
+  margin-bottom: 100px;
+  padding-left: 0px;
+
+  display: flex;
+  gap: 80px;
+  row-gap: 100px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  list-style: none;
+}

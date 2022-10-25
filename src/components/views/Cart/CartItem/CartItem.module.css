@@ -1,0 +1,160 @@
+.mainContainer {
+  margin: 24px 0px 30px 0px;
+  padding: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.infoContainer {
+  margin: 0;
+  padding: 0;
+
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.amountAndImageContainer {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 24px;
+}
+
+.name {
+  min-width: 292px;
+  min-height: 27px;
+
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px; /* identical to box height, or 90% */
+
+  color: #1d1f22;
+}
+
+.brand {
+  margin-top: 16px;
+
+  min-width: 292px;
+  min-height: 27px;
+
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 27px; /* identical to box height, or 90% */
+
+  color: #1d1f22;
+}
+
+.price {
+  margin-top: 20px;
+
+  min-width: 79px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px; /* identical to box height, or 100% */
+
+  color: #1d1f22;
+}
+
+.attributes {
+  margin-top: 20px;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.amountContainer {
+  padding: 0px;
+
+  width: 45px;
+  height: 288px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plusMinusBtns {
+  padding: 0;
+
+  width: 45px;
+  height: 45px;
+
+  font-size: larger;
+  color: #1d1f22;
+
+  background: #ffffff;
+  cursor: pointer;
+  border: 1px solid #1d1f22;
+}
+
+.itemAmount {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+
+  color: #1d1f22;
+}
+
+.imageContainer {
+  position: relative;
+
+  width: 200px;
+  height: 100%;
+}
+
+.image {
+  max-width: 200px;
+  max-height: 288px;
+}
+
+.arrowsContainer {
+  padding: 0px;
+
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+
+  width: 56px;
+  height: 24px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nextImageArrow {
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+}
