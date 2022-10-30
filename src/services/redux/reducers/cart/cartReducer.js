@@ -37,6 +37,10 @@ export default function cartReducer(state = [], { type, payload }) {
         return state;
       }
       break;
+    };
+    case Types.CART_CONTENT: {
+      return payload;
+      break;
     }
     case Types.CHECK_OUT:
       return state.filter(({ quantity }) => quantity !== 0);

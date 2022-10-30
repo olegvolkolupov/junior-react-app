@@ -17,7 +17,6 @@ class CartOverlay extends Component {
     sum: (0.0).toFixed(2),
     currencySymbol: "",
   };
-
   componentDidMount() {
     let { cartItems, currencyId } = this.props;
     if (cartItems.length === 0) {
@@ -28,6 +27,13 @@ class CartOverlay extends Component {
       currencySymbol: cartItems[0].product.prices[currencyId].currency.symbol,
     });
   };
+  componentDidUpdate(prevProps) { 
+    let { cartItems, cartItemsQuantity } = this.props;
+    if(cartItems !== prevProps.cartItems || cartItemsQuantity !== prevProps.cartItemsQuantity) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      localStorage.setItem("cartQuantity", JSON.stringify(cartItemsQuantity));
+    }
+  } 
 
   countSum = () => {
     let { cartItems, currencyId } = this.props;

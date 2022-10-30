@@ -26,8 +26,26 @@ class Cart extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.cartItemsQuantity !== prevProps.cartItemsQuantity) {
+    const { cartItemsQuantity, currencyId, cartItems } = this.props;
+    
+    if (cartItemsQuantity !== prevProps.cartItemsQuantity) {
       this.countSumAndTax();
+      localStorage.setItem("cartQuantity", JSON.stringify(cartItemsQuantity));
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
+    if (currencyId !== prevProps.currencyId) {
+      this.countSumAndTax();
+      if (cartItems.length === 0) {
+        this.setState({
+          currencySymbol: "",
+        });
+      } else {
+        this.setState({
+          currencySymbol:
+            cartItems[0].product.prices[currencyId].currency.symbol,
+        });
+      }
     }
   }
 

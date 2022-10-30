@@ -15,6 +15,7 @@ const priceStyleOutOfStock =
   styles.productPrice + " " + styles.productOutOfStock;
 
 class ProductItem extends Component {
+
   state = {
     isCartIconVisible: false
   }
@@ -23,6 +24,16 @@ class ProductItem extends Component {
       isCartIconVisible: false
     })
   }
+  componentDidUpdate(prevProps) { 
+    let { cart, cartQuantity } = this.props;
+    if(cart !== prevProps.cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    if(cartQuantity !== prevProps.cartQuantity) {
+      localStorage.setItem("cartQuantity", JSON.stringify(cartQuantity));
+    }
+  } 
+
   onMouseOver = () => {
     this.setState({
       isCartIconVisible: true
@@ -95,6 +106,8 @@ class ProductItem extends Component {
 let mapStateToProps = (state) => {
   return {
     currencyId: state.currencyId,
+    cart: state.cart,
+    cartQuantity: state.cartQuantity,
   };
 };
 

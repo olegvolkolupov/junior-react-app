@@ -13,6 +13,13 @@ export let addToCart = (product = {}, attributes = {}) => {
   };
 };
 
+export let setCartContent = (cart = []) => {
+  return {
+    type: Types.CART_CONTENT,
+    payload: cart,
+  }
+}
+
 export let checkOut = () => {
   return {
     type: Types.CHECK_OUT,
@@ -34,5 +41,12 @@ export let changeCartItemsAmount = (addOrRemoveOne = 0) => {
   return {
     type: Types.CART_AMOUNT,
     payload: addOrRemoveOne,
+  };
+};
+
+export let setCartItemsAmount = (amount = 0) => {
+  return {
+    type: Types.START_CART_AMOUNT,
+    payload: amount,
   };
 };

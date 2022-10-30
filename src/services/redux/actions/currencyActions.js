@@ -1,5 +1,12 @@
 import Types from "../types";
 
+export let setCurrency = (currency) => {
+  return {
+    type: Types.CURRENCY,
+    payload: currency,
+  }
+}
+
 export let setCurrencyId = (currencyId) => {
   return {
     type: Types.CURRENCY_ID,

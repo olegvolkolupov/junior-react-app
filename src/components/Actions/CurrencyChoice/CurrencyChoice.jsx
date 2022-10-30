@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import CurrencyItems from "./CurrencyItems";
+import CurrencyItem from "./CurrencyItem";
 import CurrencyChoiceModal from "./CurrencyChoiceModal";
 
 import { setCurrencyId } from "../../../services/redux/actions/currencyActions";
@@ -20,12 +20,17 @@ class CurrencyChoice extends Component {
   toggleCurrencyChoiceVisibility = () => {
     this.setState({
       isCurrencyChoiceVisible: !this.state.isCurrencyChoiceVisible,
-    })
+    });
   };
 
   changeCurrency = (event) => {
-    this.props.setCurrencyId(event.target.dataset.index);
-    this.props.setCurrencySymbol(event.target.textContent.split(" ")[0]);
+    let currencyId = event.target.dataset.index;
+    let currencySymbol = event.target.textContent.split(" ")[0];
+    this.props.setCurrencyId(currencyId);
+    this.props.setCurrencySymbol(currencySymbol);
+
+    localStorage.setItem("currencyId", JSON.stringify(currencyId));
+    localStorage.setItem("currencySymbol", JSON.stringify(currencySymbol));
   };
 
   onMouseOver = (event) => {
@@ -42,7 +47,7 @@ class CurrencyChoice extends Component {
 
   render() {
     const { isCurrencyChoiceVisible } = this.state;
-    const { currentCurrencySymbol } = this.props;
+    const { currency, currentCurrencySymbol } = this.props;
     return (
       <div className={styles.container}>
         <button
@@ -73,10 +78,14 @@ class CurrencyChoice extends Component {
                 onMouseOver={this.onMouseOver}
                 onMouseOut={this.onMouseOut}
               >
-                <CurrencyItems
-                  onCurrencyItemClick={this.changeCurrency}
-                  currencyItemStyle={styles.currencyItem}
-                />
+                {currency.map((item, idx) => (
+                  <CurrencyItem
+                    key={item.label}
+                    index={idx}
+                    currency={item}
+                    onCurrencyItemClick={this.changeCurrency}
+                  />
+                ))}
               </ul>
             </div>
           </CurrencyChoiceModal>
@@ -88,13 +97,14 @@ class CurrencyChoice extends Component {
 
 let mapStateToProps = (state) => {
   return {
+    currency: state.currency,
     currentCurrencySymbol: state.currencySymbol,
   };
 };
-    
+
 let mapDispatchToProps = {
   setCurrencyId: setCurrencyId,
   setCurrencySymbol: setCurrencySymbol,
 };
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(CurrencyChoice);
