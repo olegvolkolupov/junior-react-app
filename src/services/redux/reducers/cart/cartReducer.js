@@ -12,26 +12,26 @@ function isEqual(obj1, obj2) {
 }
 
 function findSameProductInState(state, { product, selectedAttributes }) {
-  let {id} = product;
   if (state.length === 0) {
     return undefined;
-  }
+  };
 
+  let {id} = product;
   for (let item of state) {
     if (item.product.id === id && isEqual(item.selectedAttributes, selectedAttributes)) {
       return item;
     }
-  }
+  };
   return undefined;
 }
 
 export default function cartReducer(state = [], { type, payload }) {
   switch (type) {
     case Types.CART_ADD_ITEM: {
-      const { productInCart } = payload;
-      let sameProduct = findSameProductInState(state, productInCart);
+      const { productForCart } = payload;
+      let sameProduct = findSameProductInState(state, productForCart);
       if (!sameProduct) {
-        return [...state, productInCart];
+        return [...state, productForCart];
       } else {
         ++sameProduct.quantity;
         return state;
@@ -53,7 +53,8 @@ export default function cartReducer(state = [], { type, payload }) {
       return state;
       break;
     }
-    default:
+    default: {
       return state;
+    }
   }
 }

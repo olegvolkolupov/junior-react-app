@@ -1,15 +1,22 @@
 import Types from "../types";
 
-export let setCategories = (catiegories) => {
+export let setCategoriesNames = (names) => {
   return {
-    type: Types.CATEGORIES,
-    payload: catiegories,
+    type: Types.CATEGORIES_NAMES,
+    payload: names,
   };
 };
 
-export let setSelectedCategory = (catiegory) => {
+export let setProductsForCurrentCategory = (products) => {
   return {
-    type: Types.SELECTED_CATEGORY,
-    payload: catiegory,
+    type: Types.PRODUCTS_FOR_CURRENT_CATEGORY,
+    payload: products,
+  };
+};
+
+export let setSelectedCategoryName = (catiegoryName) => {
+  return {
+    type: Types.SELECTED_CATEGORY_NAME,
+    payload: catiegoryName,
   };
 };

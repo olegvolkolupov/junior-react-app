@@ -7,12 +7,6 @@ export default class Attributes extends Component {
     selectedAttributeId: "",
   };
 
-  componentDidMount() {
-    this.setState({
-      selectedAttributeId: this.props.attribute.items[0].id,
-    });
-  };
-
   componentDidUpdate(prevProps, prevState) { 
     let {selectedAttributeId} = this.state;
     if(selectedAttributeId !== prevState.selectedAttributeId) {

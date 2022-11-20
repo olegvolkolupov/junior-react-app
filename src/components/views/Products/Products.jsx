@@ -21,27 +21,21 @@ class Products extends Component {
   };
 
   render() {
-    const { selectedCategory } = this.props;
+    const { productsForCurrentCategory } = this.props;
 
     return (
       <>
-        {selectedCategory.products &&
-          selectedCategory.products.map((product) => (
+        {productsForCurrentCategory &&
+          productsForCurrentCategory.map((product) => (
             <li key={product.id} className={styles.productCard}>
-              {product.inStock ? (
-                <Link
-                  to={PRODUCT_ROUTE + "/" + product.id }
-                  className={styles.link}
-                  onMouseOver={this.onMouseOver}
-                  onMouseOut={this.onMouseOut}
-                >
-                  <ProductItem product={product} />
-                </Link>
-              ) : (
-                <div>
-                  <ProductItem product={product} />
-                </div>
-              )}
+              <Link
+                to={PRODUCT_ROUTE + "/" + product.id}
+                className={styles.link}
+                onMouseOver={this.onMouseOver}
+                onMouseOut={this.onMouseOut}
+              >
+                <ProductItem product={product} />
+              </Link>
             </li>
           ))}
       </>
@@ -51,7 +45,7 @@ class Products extends Component {
 
 let mapStateToProps = (state) => {
   return {
-    selectedCategory: state.selectedCategory,
+    productsForCurrentCategory: state.productsForCurrentCategory,
     currencyId: state.currencyId,
   };
 };

@@ -1,8 +1,8 @@
 import Types from "../../types";
 
-export default function selectedCategoryReducer(state = {}, action) {
+export default function categoriesNamesReducer(state = [], action) {
   switch (action.type) {
-    case Types.SELECTED_CATEGORY_NAME:
+    case Types.CATEGORIES_NAMES:
       return action.payload;
       break;
     default: {

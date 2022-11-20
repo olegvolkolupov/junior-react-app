@@ -15,7 +15,6 @@ const priceStyleOutOfStock =
   styles.productPrice + " " + styles.productOutOfStock;
 
 class ProductItem extends Component {
-
   state = {
     isCartIconVisible: false
   }

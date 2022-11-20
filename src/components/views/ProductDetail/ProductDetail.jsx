@@ -73,7 +73,7 @@ class ProductDetail extends Component {
   };
 
   render() {
-    const { gallery, name, brand, description, attributes, prices } =
+    const { gallery, name, brand, description, attributes, prices, inStock } =
       this.state.product;
     const { currencyId } = this.props;
 
@@ -106,7 +106,11 @@ class ProductDetail extends Component {
             {attributes &&
               attributes.length > 0 &&
               attributes.map((attribute) => (
-                <Attributes key={attribute.id} attribute={attribute} changeSelectedAttribute={this.changeSelectedAttribute} />
+                <Attributes
+                  key={attribute.id}
+                  attribute={attribute}
+                  changeSelectedAttribute={this.changeSelectedAttribute}
+                />
               ))}
           </div>
           <div className={styles.priceContainer}>
@@ -120,13 +124,15 @@ class ProductDetail extends Component {
               )}
             </div>
           </div>
-          <button
-            className={styles.addToCartBtn}
-            type="button"
-            onClick={() => this.addProductToCart()}
-          >
-            ADD TO CART
-          </button>
+          {inStock && (
+            <button
+              className={styles.addToCartBtn}
+              type="button"
+              onClick={() => this.addProductToCart()}
+            >
+              ADD TO CART
+            </button>
+          )}
           {description && (
             <div className={styles.description}>{parse(description)}</div>
           )}

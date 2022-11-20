@@ -51,10 +51,15 @@ class Cart extends Component {
 
   countSumAndTax = () => {
     let { cartItems, currencyId } = this.props;
+    let total = 0;
     if (cartItems.length === 0) {
+      this.setState({
+        sum: total.toFixed(2),
+        tax: total.toFixed(2),
+        currencySymbol: "",
+      });
       return;
     }
-    let total = 0;
     cartItems.forEach(({ product, quantity }) => {
       total += product.prices[currencyId].amount * quantity;
     });

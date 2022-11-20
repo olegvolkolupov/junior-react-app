@@ -4,7 +4,7 @@ export let addToCart = (product = {}, attributes = {}) => {
   return {
     type: Types.CART_ADD_ITEM,
     payload: {
-      productInCart: {
+      productForCart: {
         product: product,
         quantity: 1,
         selectedAttributes: attributes,

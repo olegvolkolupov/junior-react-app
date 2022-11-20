@@ -1,15 +1,16 @@
 body {
-  font-family: "Raleway";
-  font-style: normal;
+  margin: 0;
+  padding: 0;
   background: #ffffff;
 }
 
 .layout {
+  width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 16px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding: 0px 100px 100px 100px;
+
+  box-sizing: border-box;
 }
 
 .active-currency-item {

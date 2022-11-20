@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import CurrencyItem from "./CurrencyItem";
-import CurrencyChoiceModal from "./CurrencyChoiceModal";
+import Backdrop from "./Backdrop";
 
 import { setCurrencyId } from "../../../services/redux/actions/currencyActions";
 import { setCurrencySymbol } from "../../../services/redux/actions/currencyActions";
@@ -24,6 +24,8 @@ class CurrencyChoice extends Component {
   };
 
   changeCurrency = (event) => {
+    this.toggleCurrencyChoiceVisibility();
+    
     let currencyId = event.target.dataset.index;
     let currencySymbol = event.target.textContent.split(" ")[0];
     this.props.setCurrencyId(currencyId);
@@ -69,9 +71,10 @@ class CurrencyChoice extends Component {
           </div>
         </button>
         {isCurrencyChoiceVisible && (
-          <CurrencyChoiceModal
-            onBackdropClick={this.toggleCurrencyChoiceVisibility}
-          >
+          <>
+            <Backdrop
+              onBackdropClick={this.toggleCurrencyChoiceVisibility}
+            />
             <div className={styles.currencyModal}>
               <ul
                 className={styles.currenciesList}
@@ -88,7 +91,7 @@ class CurrencyChoice extends Component {
                 ))}
               </ul>
             </div>
-          </CurrencyChoiceModal>
+          </>
         )}
       </div>
     );

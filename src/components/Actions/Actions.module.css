@@ -1,10 +1,13 @@
 .container {
+  margin-top: 23px;
+  margin-right: 1px;
+
   position: relative;
 
+  height: 40px;
+
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  padding: 0px;
   gap: 22px;
 }

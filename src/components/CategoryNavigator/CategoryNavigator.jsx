@@ -1,15 +1,24 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import CategoryMenu from "./CategoryMenu";
+import CategoryItem from "./CategoryItem";
 
 import styles from "./CategoryNavigator.module.css";
 
 class CategoryNavigator extends Component {
+
   render() {
+    let { categoriesNames } = this.props;
+
     return (
-      <div className={styles.categories}>
-        {this.props.catiegories.length > 0 && <CategoryMenu />}
+      <div className={styles.container}>
+        {categoriesNames.length > 0 &&
+          categoriesNames.map((category) => (
+            <Link key={category.name} to="/" className={styles.link}>
+              <CategoryItem category={category} />
+            </Link>
+          ))}
       </div>
     );
   }
@@ -17,8 +26,8 @@ class CategoryNavigator extends Component {
 
 let mapStateToProps = (state) => {
   return {
-    catiegories: state.categories,
+    categoriesNames: state.categoriesNames,
   }
-}
-
+};
+  
 export default connect(mapStateToProps)(CategoryNavigator);

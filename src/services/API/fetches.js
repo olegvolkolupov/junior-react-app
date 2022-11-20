@@ -1,110 +1,80 @@
-import { gql } from "@apollo/client";
-import { client } from "../http/client";
+import { client, Query } from '@tilework/opus';
 
-export function getCategories() {
-  return client
-    .query({
-      query: gql`
-        query getCategories {
-          categories {
-            name
-            products {
-              id
-              name
-              brand
-              inStock
-              gallery
-              description
-              category
-              attributes{
-                id
-                name
-                type
-                items{
-                  id
-                  value
-                  displayValue
-                }
-              }
-              prices {
-                currency {
-                  label
-                  symbol
-                }
-                amount
-              }
-            }
+client.setEndpoint("http://localhost:4000");
+
+export async function getCurrencies() {
+  let currencyQuery = new Query(`currencies{label,symbol}`);
+  let result = await client.post(currencyQuery);
+  return result.currencies;
+};
+
+export async function getCategoriesNames() {
+  let categoriesNamesQuery = new Query(`categories{name}`);
+  let result = await client.post(categoriesNamesQuery);
+  return result.categories;
+};
+
+export async function getProductsForCurrentCategory(category) {
+  let productsForCurrentCategoryQuery = new Query(`
+    category(input: {title: "${category}"}) {
+      products{
+        id
+        name
+        brand
+        inStock
+        gallery
+        attributes{
+          id
+          name
+          type
+          items{
+            id
+            value
+            displayValue
           }
         }
-      `,
-    })
-    .then((result) => result.data.categories);
-}
-
-export function getCategoriesNames() {
-  return client
-    .query({
-      query: gql`
-        query getCategoriesNames {
-          categories {
-            name
-          }
-        }
-      `,
-    })
-    .then((result) => result.data.categories);
-}
-
-export function getCurrencies() {
-  return client
-    .query({
-      query: gql`
-        query getCurrencies {
-          currencies {
+        prices{
+          amount
+          currency{
             label
             symbol
           }
         }
-      `,
-    })
-    .then((result) => result.data.currencies);
+      }
+    }
+  `);
+  let result = await client.post(productsForCurrentCategoryQuery);
+  return result.category.products;
 }
 
-
-export function getProductDetail(id){
-
-  return client
-    .query({
-      query: gql`
-        query getProductDetail($id: String!) {
-          product(id: $id) {
-            id
-            name
-            brand
-            inStock
-            gallery
-            description
-            attributes {
-              id
-              name
-              type
-              items {
-                displayValue
-                value
-                id
-              }
-            }
-            prices {
-              currency {
-                label
-                symbol
-              }
-              amount
-            }
-          }
-        }
-      `,
-      variables: { id },
-    })
-    .then((result) => result.data.product);
+export async function getProductDetail(productId) {
+  let productDetailQuery = new Query(`
+  product(id: "${productId}") {
+    id
+    name
+    brand
+    inStock
+    gallery
+    description
+    attributes {
+      id
+      name
+      type
+      items {
+        displayValue
+        value
+        id
+      }
+    }
+    prices {
+      currency {
+        label
+        symbol
+      }
+      amount
+    }
+  }
+  `);
+  let result = await client.post(productDetailQuery);
+  return result.product;
 }

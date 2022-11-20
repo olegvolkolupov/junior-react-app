@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import AppRouter from "./components/AppRouter";
 import Header from "./components/Header/Header";
 
-import { getCategories, getCurrencies } from "./services/API/fetches";
+import { getCurrencies, getCategoriesNames, getProductsForCurrentCategory } from "./services/API/fetches";
 import {
-  setCategories,
-  setSelectedCategory,
+  setCategoriesNames,
+  setSelectedCategoryName,
+  setProductsForCurrentCategory,
 } from "./services/redux/actions/categoryActions";
 import {
   setCurrency,
@@ -24,7 +25,7 @@ import "./global.css";
 
 class App extends Component {
   async componentDidMount() {
-    await this.props.setCategories(await getCategories());
+    await this.props.setCategoriesNames(await getCategoriesNames());
     await this.props.setCurrency(await getCurrencies());
 
     // currencyId
@@ -49,20 +50,22 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    let { categories } = this.props;
-    if (prevProps.categories !== categories) {
-      this.props.setSelectedCategory(categories[0]);
+  async componentDidUpdate(prevProps) {
+    let { categoriesNames } = this.props;
+    if (prevProps.categoriesNames !== categoriesNames) {
+      this.props.setSelectedCategoryName(categoriesNames[0]);
+      this.props.setProductsForCurrentCategory(await getProductsForCurrentCategory(categoriesNames[0].name));
+console.log(await getProductsForCurrentCategory("clothes"));
     }
   }
 
   render() {
     return (
       <BrowserRouter>
-        <div className="layout">
-          <Header />
-          <AppRouter />
-        </div>
+      <div className="layout">
+        <Header />
+        <AppRouter />
+      </div>
       </BrowserRouter>
     );
   }
@@ -70,13 +73,14 @@ class App extends Component {
 
 let mapStateToProps = (state) => {
   return {
-    categories: state.categories,
+    categoriesNames: state.categoriesNames,
   };
 };
 
 let mapDispatchToProps = {
-  setCategories: setCategories,
-  setSelectedCategory: setSelectedCategory,
+  setCategoriesNames: setCategoriesNames,
+  setSelectedCategoryName: setSelectedCategoryName,
+  setProductsForCurrentCategory: setProductsForCurrentCategory,
   setCurrency: setCurrency,
   setCurrencyId: setCurrencyId,
   setCurrencySymbol: setCurrencySymbol,

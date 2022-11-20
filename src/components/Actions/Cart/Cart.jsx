@@ -34,7 +34,11 @@ class Cart extends Component {
           )}
         </button>
         {isCartOverlayVisible && (
-          <CartOverlay onBackdropClick={this.toggleCartOverlayVisibility} />
+          <>
+            <div className={styles.backdropTransparent} onClick={this.toggleCartOverlayVisibility} />
+            <div className={styles.backdropDarkened} onClick={this.toggleCartOverlayVisibility} />
+            <CartOverlay onBackdropClick={this.toggleCartOverlayVisibility} />
+          </>
         )}
       </div>
     );

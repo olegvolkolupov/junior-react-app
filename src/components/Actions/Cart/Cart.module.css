@@ -1,5 +1,8 @@
 .container {
   position: relative;
+
+  width: 20px;
+  height: 20px;
 }
 
 .cart {
@@ -38,4 +41,26 @@
   box-sizing: content-box;
   border-radius: 60px;
   cursor: pointer;
+}
+
+.backdropTransparent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 78px;
+  z-index: 997;
+
+  background: transparent;
+}
+
+.backdropDarkened {
+  position: fixed;
+  top: 78px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+
+  background: rgba(57, 55, 72, 0.22);
 }

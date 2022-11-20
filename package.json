@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@tilework/opus": "^0.0.12",
     "gh-pages": "^4.0.0",
     "graphql": "^16.6.0",
     "html-react-parser": "^3.0.4",

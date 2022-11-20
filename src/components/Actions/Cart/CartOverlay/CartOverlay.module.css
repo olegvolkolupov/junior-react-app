@@ -1,23 +1,11 @@
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999;
-
-  display: flex;
-  justify-content: flex-end;
-
-  background: transparent;
-}
-
 .overlay {
   padding: 32px 16px;
 
   position: absolute;
-  right: 78px;
-  top: 88px;
+  right: -60px;
+  top: 44px;
+
+  z-index: 999;
 
   width: 325px;
   min-height: 250px;
@@ -176,7 +164,7 @@
 }
 
 .quantityChanger {
-  padding: 0px;
+  padding: 0;
 
   width: 24px;
   min-height: 190px;
@@ -185,7 +173,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  align-self: center;
+  align-self: stretch;
+  gap: 32px;
 }
 
 .plusMinusBtns {
